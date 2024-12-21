@@ -1,43 +1,78 @@
 # Credit Card Fraud Detection 
 
-## Problem statement 
+## Problem Statement 
 
-The problem statement chosen for this project is to predict fraudulent credit card transactions with the help of machine learning models.
+The goal of this project is to predict fraudulent credit card transactions using machine learning models. 
 
-In this project, we will analyse customer-level data which has been collected and analysed during a research collaboration of Worldline and the Machine Learning Group. 
+We analyze customer-level data collected through a research collaboration between Worldline and the Machine Learning Group. The dataset, sourced from the [Kaggle Website](https://www.kaggle.com/mlg-ulb/creditcardfraud), contains 284,807 transactions, of which 492 are fraudulent. Given the highly imbalanced nature of the dataset, appropriate handling techniques are required before model building.
 
-The dataset is taken from the [Kaggle Website](https://www.kaggle.com/mlg-ulb/creditcardfraud) website and it has a total of 2,84,807 transactions, out of which 492 are fraudulent. Since the dataset is highly imbalanced, so it needs to be handled before model building.
+---
 
 ## Business Problem Overview
 
-For many banks, retaining high profitable customers is the number one business goal. Banking fraud, however, poses a significant threat to this goal for different banks. In terms of substantial financial losses, trust and credibility, this is a concerning issue to both banks and customers alike.
+For banks, retaining high-value customers is a top priority. However, banking fraud poses a significant challenge, leading to substantial financial losses and eroding trust and credibility. 
 
-It has been estimated by [Nilson report](https://nilsonreport.com/upload/content_promo/The_Nilson_Report_Issue_1164.pdf) that by 2020 the banking frauds would account to $30 billion worldwide. With the rise in digital payment channels, the number of fraudulent transactions is also increasing with new and different ways. 
+According to the [Nilson Report](https://nilsonreport.com/upload/content_promo/The_Nilson_Report_Issue_1164.pdf), banking frauds were projected to reach $30 billion globally by 2020. The increasing adoption of digital payment channels has further amplified the risk of fraudulent transactions, with fraudsters continuously innovating new techniques.
 
-In the banking industry, credit card fraud detection using machine learning is not just a trend but a necessity for them to put proactive monitoring and fraud prevention mechanisms in place. Machine learning is helping these institutions to reduce time-consuming manual reviews, costly chargebacks and fees, and denials of legitimate transactions.
+Credit card fraud detection is no longer optional but a necessity for banks to implement proactive monitoring and fraud prevention mechanisms. Machine learning is pivotal in this effort, helping institutions reduce manual reviews, costly chargebacks, false positives, and denial of legitimate transactions.
+
+---
 
 ## Understanding and Defining Fraud
 
-Credit card fraud is any dishonest act and behaviour to obtain information without the proper authorization from the account holder for financial gain. Among different ways of frauds, Skimming is the most common one, which is the way of duplicating of information located on the magnetic strip of the card.  Apart from this, the other ways are:
+Credit card fraud involves unauthorized actions to obtain financial information for personal gain. Common types of fraud include:
 
-- Manipulation/alteration of genuine cards
-- Creation of counterfeit cards
-- Stolen/lost credit cards
-- Fraudulent telemarketing 
+- **Skimming:** Duplicating card information from the magnetic strip.
+- **Card Manipulation/Alteration:** Altering genuine cards.
+- **Counterfeit Card Creation:** Producing fake cards.
+- **Stolen/Lost Cards:** Using cards without the owner's consent.
+- **Fraudulent Telemarketing:** Scamming individuals via deceptive calls.
+
+---
 
 ## Data Dictionary
 
-The dataset can be download using this [link](https://www.kaggle.com/mlg-ulb/creditcardfraud)
+The dataset, available [here](https://www.kaggle.com/mlg-ulb/creditcardfraud), contains transactions made by European cardholders over two days in September 2013. 
 
-The data set includes credit card transactions made by European cardholders over a period of two days in September 2013. Out of a total of 2,84,807 transactions, 492 were fraudulent. This data set is highly unbalanced, with the positive class (frauds) accounting for 0.172% of the total transactions. The data set has also been modified with Principal Component Analysis (PCA) to maintain confidentiality. Apart from ‘time’ and ‘amount’, all the other features (V1, V2, V3, up to V28) are the principal components obtained using PCA. The feature 'time' contains the seconds elapsed between the first transaction in the data set and the subsequent transactions. The feature 'amount' is the transaction amount. The feature 'class' represents class labelling, and it takes the value 1 in cases of fraud and 0 in others.
+### Key Characteristics:
+- **Total Transactions:** 284,807
+- **Fraudulent Transactions:** 492 (0.172% of the total)
+- **Features:** 
+  - `Time`: Seconds elapsed between the first transaction and subsequent transactions.
+  - `Amount`: Transaction amount.
+  - `Class`: 1 for fraud, 0 otherwise.
+  - `V1` to `V28`: Principal components derived using PCA for confidentiality.
 
+---
 
 ## Project Pipeline
 
-The project pipeline can be briefly summarized in the following four steps:
+### 1. **Data Understanding**
+   - Load and explore the dataset.
+   - Identify key features for model building.
 
-- **Data Understanding:** Here, we need to load the data and understand the features present in it. This would help us choose the features that we will need for your final model.
-- **Exploratory data analytics (EDA):** Normally, in this step, we need to perform univariate and bivariate analyses of the data, followed by feature transformations, if necessary. For the current data set, because Gaussian variables are used, we do not need to perform Z-scaling. However, you can check if there is any skewness in the data and try to mitigate it, as it might cause problems during the model-building phase.
-- **Train/Test Split:** Now we are familiar with the train/test split, which we can perform in order to check the performance of our models with unseen data. Here, for validation, we can use the k-fold cross-validation method. We need to choose an appropriate k value so that the minority class is correctly represented in the test folds.
-- **Model-Building/Hyperparameter Tuning:** This is the final step at which we can try different models and fine-tune their hyperparameters until we get the desired level of performance on the given dataset. We should try and see if we get a better model by the various sampling techniques.
-- **Model Evaluation:** We need to evaluate the models using appropriate evaluation metrics. Note that since the data is imbalanced it is is more important to identify which are fraudulent transactions accurately than the non-fraudulent. We need to choose an appropriate evaluation metric which reflects this business goal.
+### 2. **Exploratory Data Analysis (EDA)**
+   - Perform univariate and bivariate analyses.
+   - Check for skewness and apply transformations if necessary.
+   - Evaluate the distribution of features.
+
+### 3. **Train/Test Split**
+   - Split the dataset into training and testing sets.
+   - Use k-fold cross-validation to ensure minority class representation in test folds.
+
+### 4. **Model Building & Hyperparameter Tuning**
+   - Experiment with various machine learning models.
+   - Use techniques like oversampling, undersampling, or SMOTE to address class imbalance.
+   - Optimize model hyperparameters for better performance.
+
+### 5. **Model Evaluation**
+   - Evaluate models using metrics suitable for imbalanced datasets (e.g., precision, recall, F1-score, ROC-AUC).
+   - Prioritize identifying fraudulent transactions over non-fraudulent ones to align with business goals.
+
+---
+
+## Conclusion
+
+This project aims to demonstrate the application of machine learning in solving a critical real-world problem. By leveraging advanced techniques, we can improve fraud detection accuracy, reduce financial losses, and enhance customer trust.
+
+---
